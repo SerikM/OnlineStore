@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TeethStoreModelStoreContainer" CdmEntityContainer="TeethStoreEntities">
+    <EntitySetMapping Name="BackgroundImages">
+      <EntityTypeMapping TypeName="TeethStoreModel.BackgroundImage">
+        <MappingFragment StoreEntitySet="BackgroundImage">
+          <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+          <ScalarProperty Name="ImageData" ColumnName="ImageData" />
+          <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="TeethStoreModel.Country">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IncompleteOrders">
+      <EntityTypeMapping TypeName="TeethStoreModel.IncompleteOrder">
+        <MappingFragment StoreEntitySet="IncompleteOrder">
+          <ScalarProperty Name="PayPalPayerId" ColumnName="PayPalPayerId" />
+          <ScalarProperty Name="CorrelationId" ColumnName="CorrelationId" />
+          <ScalarProperty Name="RequestTxnType" ColumnName="RequestTxnType" />
+          <ScalarProperty Name="RequestResidenceCnt" ColumnName="RequestResidenceCnt" />
+          <ScalarProperty Name="RequestCurrency" ColumnName="RequestCurrency" />
+          <ScalarProperty Name="RequestPaymentType" ColumnName="RequestPaymentType" />
+          <ScalarProperty Name="RequestMcFee" ColumnName="RequestMcFee" />
+          <ScalarProperty Name="RequestPaymentStatus" ColumnName="RequestPaymentStatus" />
+          <ScalarProperty Name="RequestReceiverId" ColumnName="RequestReceiverId" />
+          <ScalarProperty Name="RequestPayerId" ColumnName="RequestPayerId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="RequestPendingReason" ColumnName="RequestPendingReason" />
+          <ScalarProperty Name="RequestNotes" ColumnName="RequestNotes" />
+          <ScalarProperty Name="CspContactNumber" ColumnName="CspContactNumber" />
+          <ScalarProperty Name="CspPayerEmail" ColumnName="CspPayerEmail" />
+          <ScalarProperty Name="CartNumberOfItems" ColumnName="CartNumberOfItems" />
+          <ScalarProperty Name="RequestListOfProducts" ColumnName="RequestListOfProducts" />
+          <ScalarProperty Name="CspShippingAddress" ColumnName="CspShippingAddress" />
+          <ScalarProperty Name="RequestPaymentDate" ColumnName="RequestPaymentDate" />
+          <ScalarProperty Name="RequestMcGross" ColumnName="RequestMcGross" />
+          <ScalarProperty Name="RequestLastName" ColumnName="RequestLastName" />
+          <ScalarProperty Name="RequestFirstName" ColumnName="RequestFirstName" />
+          <ScalarProperty Name="RequestTxnId" ColumnName="RequestTxnId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="TeethStoreModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="ShippingCost" ColumnName="ShippingCost" />
+          <ScalarProperty Name="ShiptoName" ColumnName="ShiptoName" />
+          <ScalarProperty Name="PayPalPayerId" ColumnName="PayPalPayerId" />
+          <ScalarProperty Name="RequestTxnType" ColumnName="RequestTxnType" />
+          <ScalarProperty Name="RequestResidenceCnt" ColumnName="RequestResidenceCnt" />
+          <ScalarProperty Name="RequestCurrency" ColumnName="RequestCurrency" />
+          <ScalarProperty Name="RequestPaymentType" ColumnName="RequestPaymentType" />
+          <ScalarProperty Name="RequestPaymentStatus" ColumnName="RequestPaymentStatus" />
+          <ScalarProperty Name="RequestReceiverId" ColumnName="RequestReceiverId" />
+          <ScalarProperty Name="RequestPayerId" ColumnName="RequestPayerId" />
+          <ScalarProperty Name="RequestPendingReason" ColumnName="RequestPendingReason" />
+          <ScalarProperty Name="RequestNotes" ColumnName="RequestNotes" />
+          <ScalarProperty Name="CspContactNumber" ColumnName="CspContactNumber" />
+          <ScalarProperty Name="CspPayerEmail" ColumnName="CspPayerEmail" />
+          <ScalarProperty Name="CartNumberOfItems" ColumnName="CartNumberOfItems" />
+          <ScalarProperty Name="RequestListOfProducts" ColumnName="RequestListOfProducts" />
+          <ScalarProperty Name="CspShippingAddress" ColumnName="CspShippingAddress" />
+          <ScalarProperty Name="RequestPaymentDate" ColumnName="RequestPaymentDate" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="RequestLastName" ColumnName="RequestLastName" />
+          <ScalarProperty Name="RequestFirstName" ColumnName="RequestFirstName" />
+          <ScalarProperty Name="RequestTxnId" ColumnName="RequestTxnId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderedProducts">
+      <EntityTypeMapping TypeName="TeethStoreModel.OrderedProduct">
+        <MappingFragment StoreEntitySet="OrderedProducts">
+          <ScalarProperty Name="SelectedColor" ColumnName="SelectedColor" />
+          <ScalarProperty Name="SelectedSize" ColumnName="SelectedSize" />
+          <ScalarProperty Name="NordStromId" ColumnName="NordStromId" />
+          <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+          <ScalarProperty Name="ExternalLink" ColumnName="ExternalLink" />
+          <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Slides">
+      <EntityTypeMapping TypeName="TeethStoreModel.Slide">
+        <MappingFragment StoreEntitySet="Slides">
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Colors">
+      <EntityTypeMapping TypeName="TeethStoreModel.Color">
+        <MappingFragment StoreEntitySet="Color">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="ColorId" ColumnName="ColorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="TeethStoreModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="SelectedColour" ColumnName="SelectedColour" />
+          <ScalarProperty Name="SelectedSize" ColumnName="SelectedSize" />
+          <ScalarProperty Name="NordstromId" ColumnName="NordstromId" />
+          <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+          <ScalarProperty Name="ExternalLink" ColumnName="ExternalLink" />
+          <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+          <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+          <ScalarProperty Name="ImageData" ColumnName="ImageData" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductToColors">
+      <EntityTypeMapping TypeName="TeethStoreModel.ProductToColor">
+        <MappingFragment StoreEntitySet="ProductToColor">
+          <ScalarProperty Name="ProductToColorId" ColumnName="ProductToColorId" />
+          <ScalarProperty Name="ColorId" ColumnName="ColorId" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductToSizes">
+      <EntityTypeMapping TypeName="TeethStoreModel.ProductToSize">
+        <MappingFragment StoreEntitySet="ProductToSize">
+          <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="SizeId" ColumnName="SizeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sizes">
+      <EntityTypeMapping TypeName="TeethStoreModel.Size">
+        <MappingFragment StoreEntitySet="Size">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

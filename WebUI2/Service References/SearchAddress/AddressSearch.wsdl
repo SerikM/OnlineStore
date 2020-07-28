@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns3="http://utl.search.address.lands.nsw.gov" xmlns:intf="http://ws.address.lands.nsw.gov" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:tns2="http://data.address.lands.nsw.gov" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://ws.address.lands.nsw.gov" targetNamespace="http://ws.address.lands.nsw.gov" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ws.address.lands.nsw.gov">
+      <xsd:import namespace="http://data.address.lands.nsw.gov" />
+      <xsd:element name="findAddressByPlanResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="findAddressByPlanReturn" nillable="true" type="tns2:LotAddressResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="findAddress">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="houseNumber" nillable="true" type="xsd:string" />
+            <xsd:element name="roadName" nillable="true" type="xsd:string" />
+            <xsd:element name="roadType" nillable="true" type="xsd:string" />
+            <xsd:element name="suburb" nillable="true" type="xsd:string" />
+            <xsd:element name="postCode" nillable="true" type="xsd:string" />
+            <xsd:element name="projection" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="findAddressResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="findAddressReturn" nillable="true" type="tns2:AddressResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="findAddressByPlanCadId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="cadid" nillable="true" type="xsd:long" />
+            <xsd:element name="projection" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="findAddressByPlanCadIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="findAddressByPlanCadIdReturn" nillable="true" type="tns2:LotAddressResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="findAddressByPlan">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="planType" nillable="true" type="xsd:string" />
+            <xsd:element name="lotNumber" nillable="true" type="xsd:string" />
+            <xsd:element name="sectionNumber" nillable="true" type="xsd:string" />
+            <xsd:element name="planNumber" nillable="true" type="xsd:int" />
+            <xsd:element name="projection" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ArrayOf_tns2_nillable_LotAddressRecord">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="LotAddressRecord" nillable="true" type="tns2:LotAddressRecord" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOf_xsd_nillable_string">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOf_tns2_nillable_AddressRecord">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="AddressRecord" nillable="true" type="tns2:AddressRecord" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:intf="http://ws.address.lands.nsw.gov" targetNamespace="http://data.address.lands.nsw.gov">
+      <xsd:import namespace="http://utl.search.address.lands.nsw.gov" />
+      <xsd:import namespace="http://ws.address.lands.nsw.gov" />
+      <xsd:complexType name="LotAddressResult">
+        <xsd:sequence>
+          <xsd:element name="addresses" nillable="true" type="impl:ArrayOf_tns2_nillable_LotAddressRecord" />
+          <xsd:element name="errMsg" nillable="true" type="xsd:string" />
+          <xsd:element name="numRecs" type="xsd:int" />
+          <xsd:element name="searchMethod" nillable="true" type="tns3:SearchMethod" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LotAddressRecord">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns2:AddressRecord">
+            <xsd:sequence>
+              <xsd:element name="lotNumber" nillable="true" type="xsd:string" />
+              <xsd:element name="planNumber" nillable="true" type="xsd:int" />
+              <xsd:element name="planType" nillable="true" type="xsd:string" />
+              <xsd:element name="sectionNumber" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="AddressRecord">
+        <xsd:sequence>
+          <xsd:element name="houseNumberFirst" type="xsd:int" />
+          <xsd:element name="houseNumberFirstSuffix" nillable="true" type="xsd:string" />
+          <xsd:element name="houseNumberSecond" type="xsd:int" />
+          <xsd:element name="houseNumberSecondSuffix" nillable="true" type="xsd:string" />
+          <xsd:element name="objectId" type="xsd:long" />
+          <xsd:element name="postCode" type="xsd:long" />
+          <xsd:element name="roadName" nillable="true" type="xsd:string" />
+          <xsd:element name="roadSuffix" nillable="true" type="xsd:string" />
+          <xsd:element name="roadType" nillable="true" type="xsd:string" />
+          <xsd:element name="shortAddressString" nillable="true" type="xsd:string" />
+          <xsd:element name="suburbName" nillable="true" type="xsd:string" />
+          <xsd:element name="addressType" nillable="true" type="xsd:string" />
+          <xsd:element name="council" nillable="true" type="xsd:string" />
+          <xsd:element name="houseNumberString" nillable="true" type="xsd:string" />
+          <xsd:element name="addressPoint" nillable="true" type="tns2:AddressPoint" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AddressPoint">
+        <xsd:sequence>
+          <xsd:element name="coordRefSys" nillable="true" type="xsd:string" />
+          <xsd:element name="centreX" type="xsd:double" />
+          <xsd:element name="centreY" type="xsd:double" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AddressResult">
+        <xsd:sequence>
+          <xsd:element name="addresses" nillable="true" type="impl:ArrayOf_tns2_nillable_AddressRecord" />
+          <xsd:element name="errMsg" nillable="true" type="xsd:string" />
+          <xsd:element name="numRecs" type="xsd:int" />
+          <xsd:element name="searchMethod" nillable="true" type="tns3:SearchMethod" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:intf="http://ws.address.lands.nsw.gov" targetNamespace="http://utl.search.address.lands.nsw.gov">
+      <xsd:import namespace="http://ws.address.lands.nsw.gov" />
+      <xsd:complexType name="SearchMethod">
+        <xsd:sequence>
+          <xsd:element name="methodDescriptions" nillable="true" type="impl:ArrayOf_xsd_nillable_string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="findAddressByPlanCadIdResponse">
+    <wsdl:part name="parameters" element="impl:findAddressByPlanCadIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="findAddressByPlanCadIdRequest">
+    <wsdl:part name="parameters" element="impl:findAddressByPlanCadId" />
+  </wsdl:message>
+  <wsdl:message name="findAddressRequest">
+    <wsdl:part name="parameters" element="impl:findAddress" />
+  </wsdl:message>
+  <wsdl:message name="findAddressByPlanRequest">
+    <wsdl:part name="parameters" element="impl:findAddressByPlan" />
+  </wsdl:message>
+  <wsdl:message name="findAddressResponse">
+    <wsdl:part name="parameters" element="impl:findAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="findAddressByPlanResponse">
+    <wsdl:part name="parameters" element="impl:findAddressByPlanResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AddressSearch">
+    <wsdl:operation name="findAddressByPlan">
+      <wsdl:input name="findAddressByPlanRequest" message="impl:findAddressByPlanRequest" />
+      <wsdl:output name="findAddressByPlanResponse" message="impl:findAddressByPlanResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findAddress">
+      <wsdl:input name="findAddressRequest" message="impl:findAddressRequest" />
+      <wsdl:output name="findAddressResponse" message="impl:findAddressResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="findAddressByPlanCadId">
+      <wsdl:input name="findAddressByPlanCadIdRequest" message="impl:findAddressByPlanCadIdRequest" />
+      <wsdl:output name="findAddressByPlanCadIdResponse" message="impl:findAddressByPlanCadIdResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AddressSearchSoapBinding" type="impl:AddressSearch">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="findAddressByPlan">
+      <wsdlsoap:operation soapAction="findAddressByPlan" />
+      <wsdl:input name="findAddressByPlanRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findAddressByPlanResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAddress">
+      <wsdlsoap:operation soapAction="findAddress" />
+      <wsdl:input name="findAddressRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findAddressResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAddressByPlanCadId">
+      <wsdlsoap:operation soapAction="findAddressByPlanCadId" />
+      <wsdl:input name="findAddressByPlanCadIdRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findAddressByPlanCadIdResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AddressSearchService">
+    <wsdl:port name="AddressSearch" binding="impl:AddressSearchSoapBinding">
+      <wsdlsoap:address location="http://address.maps.nsw.gov.au/AddressSearchWeb/services/AddressSearch" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

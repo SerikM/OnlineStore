@@ -1,0 +1,41 @@
+﻿@{
+    Layout = null;
+}
+
+
+
+<div class="footer">
+    <table style="width:100%;">
+        <thead>
+            <tr>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+            </tr>
+        </thead>
+        <tr>
+            <td>@Html.ActionLink("Home", "Home", "Home")</td>
+            <td>@Html.ActionLink("Buy", "List", "Products")</td>
+
+            <td>@Html.ActionLink("Contact Us", "ContactUs", "Home")</td>
+            <td>@Html.ActionLink("About Us", "AboutUs", "Home")</td>
+
+            <td>@Html.ActionLink("Log In", "Login", "Account")</td>
+            <td>@Html.ActionLink("Register", "Register", "Account") </td>
+        </tr>
+
+
+    </table>
+
+    <table style="width:100%;margin-top:20px;">
+        <tr>
+            <td align="center">
+                Stesha Pty Limited (ABN 19 731 703 340)
+            </td>
+        </tr>
+    </table>
+
+</div>

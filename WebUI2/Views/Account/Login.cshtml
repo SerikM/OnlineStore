@@ -1,0 +1,39 @@
+﻿@model WebUI2.Models.LoginInfo
+
+
+
+
+<h2>Log In</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="validation-fail">
+        @Html.ValidationSummary()
+    </div>
+    <p>
+        @Html.Label("Username")
+        @Html.EditorFor(p => p.Username)
+    </p>
+    <p>
+        @Html.Label("Password")
+        @Html.EditorFor(p => p.Password)
+    </p>
+
+
+    <p><input type="submit" value="Log In" /></p>
+}
+
+<br />
+
+@Html.ActionLink("Can't remember password", "Recover", "Account", null, new { @class = "return-link" })
+
+
+
+<div style="margin-top: 20px;">
+
+    @Html.Partial("_ExternalLoginListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })
+
+</div>

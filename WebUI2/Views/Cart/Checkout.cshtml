@@ -1,0 +1,257 @@
+﻿@model WebUI2.Models.ShippingInfo
+
+@*<script src="~/Scripts/ShippingFormScripts.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
+
+<script type="text/javascript">
+    function openNew(id) {
+        if (id == "privacy") {
+            window.open("/Cart/GetPrivacyPolicy", "name", null, true);
+        }
+        else {
+            window.open("/Cart/GetTermsAndConditions", "name", null, true);
+        }
+    }
+
+</script>
+
+
+<script>
+
+    function detailsChanged() {
+        if ($("#ShipDet_Name").val() != $("#OldName").val()) return true;
+        if ($("#ShipDet_Surname").val() != $("#OldSurname").val()) return true;
+        if ($("#ShipDet_StreetNumber").val() != $("#OldStreetNumber").val()) return true;
+        if ($("#ShipDet_StreetName").val() != $("#OldStreetName").val()) return true;
+        if ($("#ShipDet_StreetType").val() != $("#OldStreetType").val()) return true;
+        if ($("#ShipDet_Town").val() != $("#OldTown").val()) return true;
+        if ($("#ShipDet_State").val() != $("#OldState").val()) return true;
+        if ($("#ShipDet_PostCode").val() != $("#OldPostCode").val()) return true;
+        if ($("#ShipDet_Country").val() != $("#OldCountry").val()) return true;
+        if ($("#ShipDet_Email").val() != $("#OldEmail").val()) return true;
+        if ($("#ShipDet_Phone").val() != $("#OldPhone").val()) return true;
+
+        return false;
+    }
+
+
+
+
+
+    function noEmptyFields() {
+        if (
+            $("#ShipDet_Name").val() == '' ||
+            $("#ShipDet_Surname").val() == '' ||
+            $("#ShipDet_StreetNumber").val() == ''||
+            $("#ShipDet_StreetName").val() == '' ||
+            $("#ShipDet_Town").val() == '' ||
+            $("#ShipDet_State").val() == '' ||
+            $("#ShipDet_PostCode").val() == '' ||
+            $("#ShipDet_Email").val() == '' ||
+            $("#ShipDet_Phone").val() == ''
+            ) return false;
+
+        return true;
+    }
+
+
+
+
+
+    $(document).ready(function () {
+
+
+        $("#submitButton").click(function (e) {
+
+
+            if ($("#member").val() == "true") {
+                if (noEmptyFields()) {
+                    if (detailsChanged()) {
+                        ShowDialog(true);
+                        e.preventDefault();
+                    }
+                }
+            }
+        });
+
+
+
+
+
+        $("#confirm").click(function (e) {
+
+            $("#updateUser").val("true");
+            $("#shipmentForm").submit();
+            HideDialog();
+
+
+        });
+
+
+        $("#decline").click(function (e) {
+
+            $("#updateUser").val("false");
+            $("#shipmentForm").submit();
+            HideDialog();
+        });
+    });
+
+
+
+    function ShowDialog() {
+
+        $("#overlay").show();
+        $("#dialog").fadeIn(300);
+        $("overlay").unbind("click");
+    }
+
+    function HideDialog() {
+
+        $("#overlay").hide();
+        $("#dialog").fadeOut(300);
+    }
+
+</script>
+
+
+
+
+
+
+<h2>Please enter your shipping details below</h2>
+(fields marked with (*) are required)
+<hr />
+
+@using (Html.BeginForm("ProceedToPay", "Cart", Model.ShipDet, FormMethod.Post,
+    new { defaultbutton = "submitButton", id = "shipmentForm" }))
+{
+    <div class="validation-fail">
+        @Html.ValidationSummary(false)
+    </div>
+
+    <div class="editor-long" id="editor-long">
+        @Html.Label("Name *")
+        @Html.EditorFor(x => x.ShipDet.Name)
+        <br />
+
+        @Html.Label("Family name *")
+        @Html.EditorFor(x => x.ShipDet.Surname)
+        <br />
+        <br />
+        <hr />
+        
+        <h3>Address</h3>
+        
+        <br />
+        <br />
+        @Html.Label("Country *")
+        @Html.DropDownListFor(x => x.ShipDet.Country, new SelectList(Model.CountriesSelectList,
+                                                                "Name", "Name", Model.CountriesSelectList.First()))
+        <br />
+        @Html.Label("State *")
+        @Html.EditorFor(x => x.ShipDet.State)
+
+
+
+        <br />
+        @Html.Label("Unit/Flat Number")
+        @Html.EditorFor(x => x.ShipDet.UnitFlat)
+        <br />
+
+        @Html.Label("Street Number *")
+        @Html.EditorFor(x => x.ShipDet.StreetNumber)
+        <br />
+
+
+
+
+
+        @Html.Label("Street Name *")
+        @Html.EditorFor(x => x.ShipDet.StreetName)
+
+
+        <br />
+
+        @Html.Label("Street Type *")
+        @Html.DropDownListFor(p => p.ShipDet.StreetType,
+                        new SelectList(Model.StreetTypeSelectData, Model.StreetTypeSelectData.First()))
+
+        <br />
+
+        @Html.Label("Town *")
+        @Html.EditorFor(x => x.ShipDet.Town)
+
+
+        <br />
+        @Html.Label("Postcode *")
+        @Html.EditorFor(x => x.ShipDet.PostCode)
+        <br />
+
+        <div id="auto-complete-div">
+            <div id="status" class="status">
+            </div>
+
+            <div>
+                <img style="width:30px; display:none;" id="address-loading" src="~/Content/MyImages/spinner.gif" />
+            </div>
+            <br />
+            
+            <div id="addr-records">
+
+            </div>
+        </div>
+
+
+        <hr />
+        <h3>Contact Details</h3>
+
+
+        @Html.Label("Email Address *")
+        @Html.EditorFor(x => x.ShipDet.Email)
+        <br />
+
+        @Html.Label("Phone *")
+        @Html.EditorFor(x => x.ShipDet.Phone)
+    </div>
+    <br />
+
+
+    <hr />
+    <p class="actionButton" align="center">
+        <input type="submit" id="submitButton" value="Proceed to payment" />
+    </p>
+
+
+    @: By placing your order you agree to the 
+    <a id="conditions" style="cursor:pointer" onclick="return openNew(this.id)">terms and conditions</a> 
+    @:and
+    <a id="privacy" style="cursor:pointer" onclick="return openNew(this.id)"> privacy policy" </a> 
+    @: of Stesha Pty Ltd (ABN 19 731 703 340)
+
+    
+    if (Model.ShipDet.Email != null)
+    {
+        @Html.Hidden("member", "true")
+        @Html.Hidden("updateUser", "false")
+        @Html.Hidden("OldName", Model.ShipDet.Name)
+        @Html.Hidden("OldSurname", Model.ShipDet.Surname)
+        @Html.Hidden("OldStreetNumber", Model.ShipDet.StreetNumber)
+        @Html.Hidden("OldStreetName", Model.ShipDet.StreetName)
+        @Html.Hidden("OldStreetType", Model.ShipDet.StreetType)
+        @Html.Hidden("OldTown", Model.ShipDet.Town)
+        @Html.Hidden("OldState", Model.ShipDet.State)
+        @Html.Hidden("OldPostCode", Model.ShipDet.PostCode)
+        @Html.Hidden("OldCountry", Model.ShipDet.Country)
+        @Html.Hidden("OldPhone", Model.ShipDet.Phone)
+        @Html.Hidden("OldEmail", Model.ShipDet.Email)
+        Html.RenderPartial("_PopupDialog");
+    }
+    else
+    {
+        @Html.Hidden("member", "false")
+        @Html.Hidden("updateUser", "false")
+    }
+
+}

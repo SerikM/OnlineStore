@@ -1,0 +1,4 @@
+C:\gitrepos\OnlineStore\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\gitrepos\OnlineStore\Model\obj\Debug\Model.Migrations._1.resources
+C:\gitrepos\OnlineStore\Model\obj\Debug\Model.csproj.GenerateResource.cache
+C:\gitrepos\OnlineStore\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache

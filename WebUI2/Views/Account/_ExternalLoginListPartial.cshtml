@@ -1,0 +1,69 @@
+﻿@using Microsoft.Owin.Security
+
+
+<hr />
+
+<h4>Use another service to log in.</h4>
+
+@{
+    var providers = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    if (!providers.Any())
+    {
+        <div>
+            <p>
+                There are no external authentication services configured.
+            </p>
+        </div>
+    }
+    else
+    {
+        string action = Model.Action;
+        string returnUrl = Model.ReturnUrl;
+        using (Html.BeginForm(action, "Account", new { ReturnUrl = returnUrl }))
+        {
+            @Html.AntiForgeryToken()
+            <div id="socialLoginList">
+                <p>
+                    @foreach (AuthenticationDescription p in providers)
+                    {
+                        if (p.AuthenticationType.Equals("Facebook"))
+                        {
+
+                            <button type="submit"
+                                    id="@p.AuthenticationType"
+                                    name="provider" value="@p.AuthenticationType"
+                                    title="Log in using your @p.Caption account"
+                                    class="facebook">
+                                <img src="~/Content/MyImages/facebook.png" style="vertical-align:middle; " />
+                                Log in using your Facebook account
+                            </button>
+                            <br />
+                            <br />
+                        }
+                        else if (p.AuthenticationType.Equals("Google"))
+                        {
+                            <button type="submit"
+                                    class="action blue"
+                                    id="@p.AuthenticationType"
+                                    name="provider" value="@p.AuthenticationType">
+                                Login using your Google account
+                            </button>
+                        }
+
+                        else
+                        {
+                            <button type="submit" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType"
+                                    title="Log in using your @p.Caption account">
+                                Login using your @p.AuthenticationType account
+                            </button>
+                            <br />
+                            <br />
+                        }
+                    }
+                </p>
+            </div>
+        }
+    }
+
+
+}

@@ -1,0 +1,65 @@
+﻿@model WebUI2.Models.PagingInfo
+
+
+
+@*<script src="/Scripts/SearchProductAjax.js"></script>
+<script src="/Scripts/MyScripts.js"></script>
+<script src="/Scripts/LazyLoading.js"></script>
+<script src="/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
+
+
+<div>
+    <div style="margin-bottom:10px;">
+
+        &nbsp;&nbsp;&nbsp; search by the name of the product
+        <table>
+            <tr>
+                <td>
+
+                    <img src="~/Content/MyImages/magnifying-glass.jpg" id="search-glass" />
+                </td>
+
+                <td>
+                    <input type="text" style="width:0; display:none;" id="search-box" />
+                </td>
+                <td>
+                    <img id="loading-img" style="margin-left:40px;display:none;width:59px; vertical-align:middle;" src="~/Content/MyImages/spinner.gif" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+<div id="search-results" style="display:none; width:100%;">
+
+</div>
+
+
+
+<div class="products" id="products-div">
+
+    @{
+        Html.RenderPartial("_ProductsBundle", Model.Products);
+    }
+
+
+    @Html.HiddenFor(p => p.Category)
+    @Html.HiddenFor(p => p.SubCategory)
+    @Html.HiddenFor(p => p.PageSize)
+</div>
+
+
+
+<div style="z-index:1;">
+    <table style="width: 100%;z-index:1;">
+        <tr style="z-index:1;">
+            <td style="z-index:1;" id="loading-photos-indic" align="center"> load more</td>
+        </tr>
+    </table>
+</div>
+
+

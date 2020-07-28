@@ -1,0 +1,129 @@
+﻿@model Model.EF.Order
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Order Details</h2>
+
+<div class="transSummary">
+
+    <hr />
+    <table>
+        <tr>
+            <td>
+                @Html.Label("Transaction Id")
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.RequestTxnId)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.RequestFirstName)
+            </td>
+            <td>
+
+                @Html.DisplayFor(model => model.RequestFirstName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.RequestLastName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.RequestLastName)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Total)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.Total)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.RequestPaymentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.RequestPaymentDate)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.CspShippingAddress)
+            </td>
+            <td>
+
+                @Html.DisplayFor(model => model.CspShippingAddress)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.RequestListOfProducts)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => model.RequestListOfProducts)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.CspPayerEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CspPayerEmail)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.CspContactNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CspContactNumber)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.RequestPayerId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.RequestPayerId)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.RequestReceiverId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.RequestReceiverId)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.RequestPaymentStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.RequestPaymentStatus)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.RequestCurrency)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.RequestCurrency)
+            </td>
+        </tr>
+    </table>
+</div>
+

@@ -1,0 +1,19 @@
+﻿@model Model.Entities.ShoppingCart
+
+
+
+
+
+<div class="check-out-button">
+    @Html.ActionLink("Checkout", "Index", "Cart", new { returnUrl = Request.Url.PathAndQuery }, null)
+
+    @{
+        string str = "Your Cart:  " + Model.ProductLines.Sum(x => x.Quantity) + " item(s): " +
+        Model.ComputeCartValue().ToString("c");
+
+
+        @Html.ActionLink(str, "Index", "Cart", new { returnUrl = Request.Url.PathAndQuery }, new { id="cart-values"})
+
+    }
+</div>
+

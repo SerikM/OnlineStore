@@ -1,0 +1,73 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Welcome! | Stesha</title>
+    @Scripts.Render("~/bundles/scripts")
+    @Styles.Render("~/bundles/styles")
+</head>
+
+
+
+
+<body>
+    <div id="header">
+        <table style="width:100%;">
+            <tr>
+                <td>
+                    <div class="title">
+
+                        @using (Html.BeginForm("Home", "Home"))
+                        {
+                            <input class="logo-button" type="image" src="~/Content/MyImages/haze.png" />
+                            @Html.ActionLink("Home", "Home", "Home")
+                            @Html.ActionLink("About Us", "AboutUs", "Home")
+                            @Html.ActionLink("Contact Us", "ContactUs", "Home")
+                            @Html.ActionLink("Buy", "List", "Products")
+                        }
+
+                    </div>
+                </td>
+
+
+
+                <td>
+                    <div class="member-console">
+                        @{
+                            if (Session["Profile"] == null)
+                            {
+
+                                @Html.ActionLink("Log in", "Login", "Account")
+                                @Html.ActionLink("Register", "Register", "Account")
+                            }
+
+                            else
+                            {
+                                var cust = (Model.ExternalAuthentication.ApplicationUser)Session["Profile"];
+
+                                @Html.ActionLink("Sign Off", "Signoff", "Account")
+                                @Html.ActionLink("Logged in as " + cust.UserName, "Personal", "Account")
+                            }
+                        }
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+
+                <td></td>
+                <td>
+                    @{
+                        Html.RenderAction("CartSummary", "Cart");
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    @RenderBody()
+
+</body>
+</html>

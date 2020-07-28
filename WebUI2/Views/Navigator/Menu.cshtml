@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WebUI2.Models.CategoryInfo>
+
+
+@{
+    Layout = null;
+}
+
+<div class="top-sub-menu">
+    @Html.RouteLink("All products", new { controller = "Products", action = "List" },
+                                  new { @class = null == ViewBag.CurrentCategory ? "selected" : null });
+
+
+</div>
+<br />
+<br />
+
+<table cellspacing="0" cellpadding="0">
+
+    @foreach (var cat in Model)
+    {
+        <tr class="top-sub-menu">
+            <td valign="top">
+                @Html.RouteLink(cat.Name, new { controller = "Products", action = "List", currentCategory = cat.Name }, new { @class = cat.Name == ViewBag.CurrentCategory ? "selected" : null })
+            </td>
+
+
+            <td class="sub-menu" valign="top">
+                <ul>
+                    @foreach (var sub in cat.SubCategories)
+                    {
+                        <li>
+                            @Html.RouteLink(sub,
+                                              new { controller = "Products", action = "List", currentCategory = cat.Name, currentSubCategory = sub })
+                        </li>
+                    }
+
+
+                </ul>
+
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+
+

@@ -1,0 +1,82 @@
+﻿@model Model.Entities.CustomerInfo
+
+@*<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
+<h2>Register as a New User</h2>
+
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { defaultbutton = "createButton" }))
+{
+    @Html.AntiForgeryToken()
+    <div>
+
+        <hr />
+        <div class="validation-fail">
+            @Html.ValidationSummary()
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Name)*
+            <div>
+                @Html.EditorFor(model => model.Name)
+
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Surname)*
+            <div>
+                @Html.EditorFor(model => model.Surname)
+
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Username)*
+            <div>
+                @Html.EditorFor(model => model.Username)
+
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Password)*
+            <div>
+                @Html.EditorFor(model => model.Password)
+
+            </div>
+        </div>
+
+        <div>
+            @Html.Label("Confirm Password")*
+            <div>
+                @Html.EditorFor(model => model.ConfirmPassword)
+
+            </div>
+        </div>
+
+
+
+        <div>
+            @Html.LabelFor(model => model.Email)*
+            <div>
+                @Html.EditorFor(model => model.Email)
+
+            </div>
+        </div>
+        <br />
+        <div>
+            <div>
+                <input id="createButton" type="submit" value="Create" />
+
+                @Html.ActionLink("Back Home", "Home", "Home", null, new { style = "margin-left:20px;color:white;" })
+
+            </div>
+        </div>
+    </div>
+}
+
+
+

@@ -1,0 +1,75 @@
+﻿@model Model.EF.Product
+
+
+
+
+
+
+<div class="product">
+
+
+    <table>
+        <tr>
+            <td valign="top">
+                <a id="@Model.ProductID"
+                    href="/Products/ShowDetailedDescription?productId=@Model.ProductID&returnUrl=@Request.Url.PathAndQuery"
+                   class="details-link">
+                   
+                     <img class="product-image"
+                         src="@Url.Action("GetImage", "Products", new { productId = Model.ProductID})" />
+                </a>
+
+
+                <div style="height:60px; margin-top:10px;">
+                    <input type="submit" class="add-to-cart" style="width:80%;" id="@Model.ProductID" value="Add to Cart" />
+                    @{
+                        string str = Model.ProductID + "loading-image";
+                        <img id="@str" class="spinner" src="~/Content/MyImages/spinner.gif" />
+                    }
+                </div>
+
+            </td>
+
+            <td style="width:35%;" valign="top">
+                @{
+                    string id = Model.ProductID + "product-image-pop";
+                    <img id="@id" class="product-image-pop" src="@Url.Action("GetImage", "Products", new { productId = Model.ProductID})" />
+                }
+
+                <h3>@Model.Name</h3>
+
+                <a class="more-detail-link" href="~/Products/ShowDetailedDescription?productId=@Model.ProductID&returnUrl=@Request.Url.PathAndQuery"> read more...</a>
+                <h4>@Model.Price.ToString("c")</h4>
+
+
+
+                @if (Session["Profile"] != null)
+                {
+                    Model.ExternalAuthentication.ApplicationUser user =
+                                           (Model.ExternalAuthentication.ApplicationUser)Session["Profile"];
+                    if ((user.FavouritesList.Where(p => Convert.ToInt32(p.ProductID) == Model.ProductID)).Count() == 0)
+                    {
+                        string divId = Model.ProductID + "link";
+                       <div class="add-to-fav" id="@divId">
+                          <input type="hidden" id="@Model.ProductID" />
+                          Add To Wish List
+                      </div>
+                    }
+                    else 
+                    { 
+                        
+                      <a class="more-detail-link" href="/Products/WishList?UserName=@user.UserName&returnUrl=/Products/List">view my wish list</a>
+                    }
+                }
+            </td>
+        </tr>
+    </table>
+
+
+
+</div>
+
+
+
+
+

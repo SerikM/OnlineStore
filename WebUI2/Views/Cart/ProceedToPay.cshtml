@@ -1,0 +1,124 @@
+﻿@model WebUI2.Models.CreditCardInfo
+
+
+@*<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/CardFormValidation.js"></script>
+<script src="~/Scripts/PopupDialogScript.js"></script>*@
+
+<h2>Payment</h2>
+
+Amount for payment is @ViewData["cartValue"]
+
+
+<h3>Choose preferred method of payment</h3>
+
+
+<table style="width:100%">
+    <tr>
+
+        <td align="center" style="border-top: solid; border-top-color: white; min-height: 600px; vertical-align: central;">
+
+            <br /><br />
+
+
+            <p class="actionButton">
+                @Html.ActionLink("Pay with PayPal", "SetExpressCheckout", "ExpressCheckout")
+            </p>
+
+            Click the 'Pay with PayPal' button above to switch to PayPal billing.
+            <br />
+
+            You will be taken to PayPal's site and then returned here upon completion of payment.
+
+            <br />
+            <br />
+        </td>
+
+
+    </tr>
+    <tr>
+        <td style="min-height:600px;vertical-align:central;">
+            <img src="https://www.paypal.com/en_US/i/logo/PayPal_mark_37x23.gif" />
+        </td>
+
+    </tr>
+</table>
+
+
+
+
+
+<table style="width: 100%">
+
+
+    <tr>
+        <td style="vertical-align: central;">
+            <hr />
+            <p>
+                Pay With a Credit Card
+            </p>
+            <img src="~/Content/MyImages/cards.gif" />
+
+
+            <div class="editor">
+
+                @using (Html.BeginForm("Set", "PayFlowDirect", Model, FormMethod.Post, new { defaultbutton = "submitButton" }))
+                {
+                    // For direct payment pro (using nvp) submit form to: /*"SetDirectPayment"*//*"DirectPayment"*/
+                    // For direct payment pro (using SOAP) submit form to: /*"SetDirectPayment"/*, /*"DirectPaymentSoap"*/
+
+                    <div class="validation-fail">
+                        @Html.ValidationSummary(false)
+
+                        <div style="margin-left:40px;margin-bottom: 40px;">
+                            <div id="card"></div>
+                            <div id="month"></div>
+                            <div id="year"></div>
+                        </div>
+
+                    </div>
+
+
+                    <p>
+                        @Html.Label("Card Number") @Html.TextBoxFor(p => p.Account)
+                    </p>
+
+
+                    <p>
+                        @Html.Label("CVV (card security code)") @Html.TextBoxFor(p => p.Verification)
+                    </p>
+
+                    <p class="spec-sel">
+                        @Html.Label("Card Type")
+                        @Html.DropDownListFor(p => p.CardType,
+                                            new SelectList(new string[] { "Select", "Master", "Visa" }, "Select"))
+                    </p>
+
+                    <p class="spec-sel">
+                        @Html.Label("Expiry Date")
+
+                        @Html.DropDownListFor(p => p.months,
+                               ((SelectList)ViewData["months"]))
+
+                        @Html.DropDownListFor(p => p.years,
+                              ((SelectList)ViewData["years"]))
+                    </p>
+
+                    <input type="submit" id="submitButton" value="Submit Payment" />
+
+                }
+
+            </div>
+
+
+
+        </td>
+    </tr>
+</table>
+
+
+   @{
+       Html.RenderPartial("_PopupDialog");
+    }
+

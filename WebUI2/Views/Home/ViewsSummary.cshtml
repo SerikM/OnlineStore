@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Model.EF.Product>
+
+
+
+
+<div class="recent-views">
+
+    @if (Model.Any())
+    {
+
+        <hr />
+        <h2>Recently Viewed</h2>
+
+        <table>
+    <tr>
+            
+            
+        @foreach (var prodView in Model)
+        {
+                   <td>
+                       @using (Html.BeginForm("ShowDetailedDescription", "Products",
+                       new { productId = prodView.ProductID, returnUrl = Request.Url.PathAndQuery }))
+                       {
+                       <input type="image" class="view-summary-image"
+                              src="@Url.Action("GetImage", "Products", new { productId = prodView.ProductID})" />
+                       }
+                   </td>
+            }
+</tr></table>
+    }
+</div>

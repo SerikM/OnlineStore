@@ -1,0 +1,44 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+    @*<link href="~/Content/AdminCSS.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>*@
+</head>
+<body>
+
+<div id="header">
+
+    <div class="title">
+        @using (Html.BeginForm("Home", "Home"))
+        {
+            <input class="logo-button" type="image" src="~/Content/MyImages/haze.png"/>
+
+            @Html.ActionLink("Home", "Home", "Home")
+            @Html.ActionLink("About Us", "AboutUs", "Home")
+            @Html.ActionLink("Contact Us", "ContactUs", "Home")
+            @Html.ActionLink("Testimonials", "Testimonials", "Home")
+        }
+    </div>
+</div>
+<div class="body">
+    @if (TempData["Confirmation"] != null)
+    {
+        <div class="confirm-green">@TempData["Confirmation"]</div>
+    }
+    else if (TempData["Fail"] != null)
+    {
+        <div class="fail-red">@TempData["Fail"]</div>
+    }
+
+    @RenderBody()
+</div>
+</body>
+
+   @Scripts.Render("~/bundles/adminScripts")
+   @Styles.Render("~/bundles/adminStyles")
+
+</html>

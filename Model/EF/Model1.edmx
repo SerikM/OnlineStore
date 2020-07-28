@@ -1,0 +1,698 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TeethStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BackgroundImage">
+          <Key>
+            <PropertyRef Name="ImageId" />
+          </Key>
+          <Property Name="ImageId" Type="int" Nullable="false" />
+          <Property Name="ImageData" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ImageMimeType" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="ColorId" />
+          </Key>
+          <Property Name="ColorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IncompleteOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestTxnId" Type="varchar(max)" Nullable="false" />
+          <Property Name="RequestFirstName" Type="varchar(max)" Nullable="false" />
+          <Property Name="RequestLastName" Type="varchar(max)" Nullable="false" />
+          <Property Name="RequestMcGross" Type="varchar(max)" />
+          <Property Name="RequestPaymentDate" Type="varchar(max)" Nullable="false" />
+          <Property Name="CspShippingAddress" Type="varchar(max)" Nullable="false" />
+          <Property Name="RequestListOfProducts" Type="varchar(max)" />
+          <Property Name="CartNumberOfItems" Type="varchar(max)" />
+          <Property Name="CspPayerEmail" Type="varchar(max)" Nullable="false" />
+          <Property Name="CspContactNumber" Type="varchar(max)" Nullable="false" />
+          <Property Name="RequestNotes" Type="varchar(max)" />
+          <Property Name="RequestPendingReason" Type="varchar(max)" />
+          <Property Name="Message" Type="varchar(max)" />
+          <Property Name="RequestPayerId" Type="varchar(max)" />
+          <Property Name="RequestReceiverId" Type="varchar(max)" />
+          <Property Name="RequestPaymentStatus" Type="varchar(max)" Nullable="false" />
+          <Property Name="RequestMcFee" Type="varchar(max)" />
+          <Property Name="RequestPaymentType" Type="varchar(max)" />
+          <Property Name="RequestCurrency" Type="varchar(max)" />
+          <Property Name="RequestResidenceCnt" Type="varchar(max)" />
+          <Property Name="RequestTxnType" Type="varchar(max)" />
+          <Property Name="CorrelationId" Type="varchar(max)" />
+          <Property Name="PayPalPayerId" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestTxnId" Type="varchar(max)" Nullable="false" />
+          <Property Name="RequestFirstName" Type="varchar(max)" Nullable="false" />
+          <Property Name="RequestLastName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Total" Type="varchar(max)" />
+          <Property Name="RequestPaymentDate" Type="varchar(max)" Nullable="false" />
+          <Property Name="CspShippingAddress" Type="varchar(max)" Nullable="false" />
+          <Property Name="RequestListOfProducts" Type="varchar(max)" />
+          <Property Name="CartNumberOfItems" Type="varchar(max)" />
+          <Property Name="CspPayerEmail" Type="varchar(max)" Nullable="false" />
+          <Property Name="CspContactNumber" Type="varchar(max)" Nullable="false" />
+          <Property Name="RequestNotes" Type="varchar(max)" />
+          <Property Name="RequestPendingReason" Type="varchar(max)" />
+          <Property Name="RequestPayerId" Type="varchar(max)" />
+          <Property Name="RequestReceiverId" Type="varchar(max)" />
+          <Property Name="RequestPaymentStatus" Type="varchar(max)" Nullable="false" />
+          <Property Name="RequestPaymentType" Type="varchar(max)" />
+          <Property Name="RequestCurrency" Type="varchar(max)" />
+          <Property Name="RequestResidenceCnt" Type="varchar(max)" />
+          <Property Name="RequestTxnType" Type="varchar(max)" />
+          <Property Name="PayPalPayerId" Type="varchar(max)" />
+          <Property Name="ShiptoName" Type="varchar(max)" />
+          <Property Name="ShippingCost" Type="varchar(max)" />
+          <Property Name="SubTotal" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="OrderedProducts">
+          <Key>
+            <PropertyRef Name="RecordId" />
+          </Key>
+          <Property Name="RecordId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="LongDescription" Type="varchar(max)" Nullable="false" />
+          <Property Name="ExternalLink" Type="varchar(max)" />
+          <Property Name="SubCategory" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="NordStromId" Type="int" />
+          <Property Name="SelectedSize" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="SelectedColor" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="500" />
+          <Property Name="ImageData" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ImageMimeType" Type="varchar" MaxLength="50" />
+          <Property Name="LongDescription" Type="varchar(max)" />
+          <Property Name="ExternalLink" Type="varchar(max)" />
+          <Property Name="SubCategory" Type="nvarchar" MaxLength="500" />
+          <Property Name="NordstromId" Type="int" />
+          <Property Name="SelectedSize" Type="nvarchar" MaxLength="500" />
+          <Property Name="SelectedColour" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="ProductToColor">
+          <Key>
+            <PropertyRef Name="ProductToColorId" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ColorId" Type="int" Nullable="false" />
+          <Property Name="ProductToColorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductToSize">
+          <Key>
+            <PropertyRef Name="Discriminator" />
+          </Key>
+          <Property Name="SizeId" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Discriminator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Size">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Slides">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageName" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_OrderedProducts_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OrderedProducts" Type="Self.OrderedProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderedProducts">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductToColorColor">
+          <End Role="Color" Type="Self.Color" Multiplicity="1" />
+          <End Role="ProductToColor" Type="Self.ProductToColor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="ProductToColor">
+              <PropertyRef Name="ColorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductToColorProduct">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="ProductToColor" Type="Self.ProductToColor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductToColor">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductToSize_Product">
+          <End Role="Products" Type="Self.Products" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProductToSize" Type="Self.ProductToSize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductToSize">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductToSize_Size">
+          <End Role="Size" Type="Self.Size" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProductToSize" Type="Self.ProductToSize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Size">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductToSize">
+              <PropertyRef Name="SizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeethStoreModelStoreContainer">
+          <EntitySet Name="BackgroundImage" EntityType="Self.BackgroundImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IncompleteOrder" EntityType="Self.IncompleteOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderedProducts" EntityType="Self.OrderedProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductToColor" EntityType="Self.ProductToColor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductToSize" EntityType="Self.ProductToSize" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Size" EntityType="Self.Size" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Slides" EntityType="Self.Slides" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_OrderedProducts_Order" Association="Self.FK_OrderedProducts_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderedProducts" EntitySet="OrderedProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductToColorColor" Association="Self.FK_ProductToColorColor">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="ProductToColor" EntitySet="ProductToColor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductToColorProduct" Association="Self.FK_ProductToColorProduct">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductToColor" EntitySet="ProductToColor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductToSize_Product" Association="Self.FK_ProductToSize_Product">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductToSize" EntitySet="ProductToSize" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductToSize_Size" Association="Self.FK_ProductToSize_Size">
+            <End Role="Size" EntitySet="Size" />
+            <End Role="ProductToSize" EntitySet="ProductToSize" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TeethStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TeethStoreEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BackgroundImages" EntityType="TeethStoreModel.BackgroundImage" />
+          <EntitySet Name="Countries" EntityType="TeethStoreModel.Country" />
+          <EntitySet Name="IncompleteOrders" EntityType="TeethStoreModel.IncompleteOrder" />
+          <EntitySet Name="Orders" EntityType="TeethStoreModel.Order" />
+          <EntitySet Name="OrderedProducts" EntityType="TeethStoreModel.OrderedProduct" />
+          <EntitySet Name="Slides" EntityType="TeethStoreModel.Slide" />
+          <AssociationSet Name="FK_OrderedProducts_Order" Association="TeethStoreModel.FK_OrderedProducts_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderedProduct" EntitySet="OrderedProducts" />
+          </AssociationSet>
+          <EntitySet Name="Colors" EntityType="TeethStoreModel.Color" />
+          <EntitySet Name="Products" EntityType="TeethStoreModel.Product" />
+          <EntitySet Name="ProductToColors" EntityType="TeethStoreModel.ProductToColor" />
+          <EntitySet Name="ProductToSizes" EntityType="TeethStoreModel.ProductToSize" />
+          <AssociationSet Name="FK_ProductToColorColor" Association="TeethStoreModel.FK_ProductToColorColor">
+            <End Role="Color" EntitySet="Colors" />
+            <End Role="ProductToColor" EntitySet="ProductToColors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductToColorProduct" Association="TeethStoreModel.FK_ProductToColorProduct">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductToColor" EntitySet="ProductToColors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductToSize_Product" Association="TeethStoreModel.FK_ProductToSize_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductToSize" EntitySet="ProductToSizes" />
+          </AssociationSet>
+          <EntitySet Name="Sizes" EntityType="TeethStoreModel.Size" />
+          <AssociationSet Name="FK_ProductToSize_Size" Association="TeethStoreModel.FK_ProductToSize_Size">
+            <End Role="Size" EntitySet="Sizes" />
+            <End Role="ProductToSize" EntitySet="ProductToSizes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BackgroundImage">
+          <Key>
+            <PropertyRef Name="ImageId" />
+          </Key>
+          <Property Name="ImageId" Type="Int32" Nullable="false" />
+          <Property Name="ImageData" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImageMimeType" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="IncompleteOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestTxnId" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestFirstName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestLastName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestMcGross" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestPaymentDate" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CspShippingAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestListOfProducts" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CartNumberOfItems" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CspPayerEmail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CspContactNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestPendingReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestPayerId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestReceiverId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestPaymentStatus" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestMcFee" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestPaymentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestCurrency" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestResidenceCnt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestTxnType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CorrelationId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PayPalPayerId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestTxnId" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestFirstName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestLastName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestPaymentDate" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CspShippingAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestListOfProducts" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CartNumberOfItems" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CspPayerEmail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CspContactNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestPendingReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestPayerId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestReceiverId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestPaymentStatus" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestPaymentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestCurrency" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestResidenceCnt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RequestTxnType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PayPalPayerId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ShiptoName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ShippingCost" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubTotal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OrderedProducts" Relationship="TeethStoreModel.FK_OrderedProducts_Order" FromRole="Order" ToRole="OrderedProduct" />
+        </EntityType>
+        <EntityType Name="OrderedProduct">
+          <Key>
+            <PropertyRef Name="RecordId" />
+          </Key>
+          <Property Name="RecordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="LongDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExternalLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategory" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="NordStromId" Type="Int32" />
+          <Property Name="SelectedSize" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SelectedColor" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Order" Relationship="TeethStoreModel.FK_OrderedProducts_Order" FromRole="OrderedProduct" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Slide">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_OrderedProducts_Order">
+          <End Type="TeethStoreModel.Order" Role="Order" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TeethStoreModel.OrderedProduct" Role="OrderedProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderedProduct">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="ColorId" />
+          </Key>
+          <Property Name="ColorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProductToColors" Relationship="TeethStoreModel.FK_ProductToColorColor" FromRole="Color" ToRole="ProductToColor" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="16" Scale="2" />
+          <Property Name="Category" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ImageData" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImageMimeType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LongDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExternalLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SubCategory" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="NordstromId" Type="Int32" />
+          <Property Name="SelectedSize" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SelectedColour" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProductToColors" Relationship="TeethStoreModel.FK_ProductToColorProduct" FromRole="Product" ToRole="ProductToColor" />
+          <NavigationProperty Name="ProductToSizes" Relationship="TeethStoreModel.FK_ProductToSize_Product" FromRole="Product" ToRole="ProductToSize" />
+        </EntityType>
+        <EntityType Name="ProductToColor">
+          <Key>
+            <PropertyRef Name="ProductToColorId" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ColorId" Type="Int32" Nullable="false" />
+          <Property Name="ProductToColorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Color" Relationship="TeethStoreModel.FK_ProductToColorColor" FromRole="ProductToColor" ToRole="Color" />
+          <NavigationProperty Name="Product" Relationship="TeethStoreModel.FK_ProductToColorProduct" FromRole="ProductToColor" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ProductToSize">
+          <Key>
+            <PropertyRef Name="Discriminator" />
+          </Key>
+          <Property Name="SizeId" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Discriminator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Product" Relationship="TeethStoreModel.FK_ProductToSize_Product" FromRole="ProductToSize" ToRole="Product" />
+          <NavigationProperty Name="Size" Relationship="TeethStoreModel.FK_ProductToSize_Size" FromRole="ProductToSize" ToRole="Size" />
+        </EntityType>
+        <Association Name="FK_ProductToColorColor">
+          <End Type="TeethStoreModel.Color" Role="Color" Multiplicity="1" />
+          <End Type="TeethStoreModel.ProductToColor" Role="ProductToColor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="ProductToColor">
+              <PropertyRef Name="ColorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductToColorProduct">
+          <End Type="TeethStoreModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="TeethStoreModel.ProductToColor" Role="ProductToColor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductToColor">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductToSize_Product">
+          <End Type="TeethStoreModel.Product" Role="Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TeethStoreModel.ProductToSize" Role="ProductToSize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductToSize">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Size">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProductToSizes" Relationship="TeethStoreModel.FK_ProductToSize_Size" FromRole="Size" ToRole="ProductToSize" />
+        </EntityType>
+        <Association Name="FK_ProductToSize_Size">
+          <End Type="TeethStoreModel.Size" Role="Size" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TeethStoreModel.ProductToSize" Role="ProductToSize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Size">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductToSize">
+              <PropertyRef Name="SizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TeethStoreModelStoreContainer" CdmEntityContainer="TeethStoreEntities">
+          <EntitySetMapping Name="BackgroundImages">
+            <EntityTypeMapping TypeName="TeethStoreModel.BackgroundImage">
+              <MappingFragment StoreEntitySet="BackgroundImage">
+                <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+                <ScalarProperty Name="ImageData" ColumnName="ImageData" />
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="TeethStoreModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IncompleteOrders">
+            <EntityTypeMapping TypeName="TeethStoreModel.IncompleteOrder">
+              <MappingFragment StoreEntitySet="IncompleteOrder">
+                <ScalarProperty Name="PayPalPayerId" ColumnName="PayPalPayerId" />
+                <ScalarProperty Name="CorrelationId" ColumnName="CorrelationId" />
+                <ScalarProperty Name="RequestTxnType" ColumnName="RequestTxnType" />
+                <ScalarProperty Name="RequestResidenceCnt" ColumnName="RequestResidenceCnt" />
+                <ScalarProperty Name="RequestCurrency" ColumnName="RequestCurrency" />
+                <ScalarProperty Name="RequestPaymentType" ColumnName="RequestPaymentType" />
+                <ScalarProperty Name="RequestMcFee" ColumnName="RequestMcFee" />
+                <ScalarProperty Name="RequestPaymentStatus" ColumnName="RequestPaymentStatus" />
+                <ScalarProperty Name="RequestReceiverId" ColumnName="RequestReceiverId" />
+                <ScalarProperty Name="RequestPayerId" ColumnName="RequestPayerId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="RequestPendingReason" ColumnName="RequestPendingReason" />
+                <ScalarProperty Name="RequestNotes" ColumnName="RequestNotes" />
+                <ScalarProperty Name="CspContactNumber" ColumnName="CspContactNumber" />
+                <ScalarProperty Name="CspPayerEmail" ColumnName="CspPayerEmail" />
+                <ScalarProperty Name="CartNumberOfItems" ColumnName="CartNumberOfItems" />
+                <ScalarProperty Name="RequestListOfProducts" ColumnName="RequestListOfProducts" />
+                <ScalarProperty Name="CspShippingAddress" ColumnName="CspShippingAddress" />
+                <ScalarProperty Name="RequestPaymentDate" ColumnName="RequestPaymentDate" />
+                <ScalarProperty Name="RequestMcGross" ColumnName="RequestMcGross" />
+                <ScalarProperty Name="RequestLastName" ColumnName="RequestLastName" />
+                <ScalarProperty Name="RequestFirstName" ColumnName="RequestFirstName" />
+                <ScalarProperty Name="RequestTxnId" ColumnName="RequestTxnId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="TeethStoreModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="ShippingCost" ColumnName="ShippingCost" />
+                <ScalarProperty Name="ShiptoName" ColumnName="ShiptoName" />
+                <ScalarProperty Name="PayPalPayerId" ColumnName="PayPalPayerId" />
+                <ScalarProperty Name="RequestTxnType" ColumnName="RequestTxnType" />
+                <ScalarProperty Name="RequestResidenceCnt" ColumnName="RequestResidenceCnt" />
+                <ScalarProperty Name="RequestCurrency" ColumnName="RequestCurrency" />
+                <ScalarProperty Name="RequestPaymentType" ColumnName="RequestPaymentType" />
+                <ScalarProperty Name="RequestPaymentStatus" ColumnName="RequestPaymentStatus" />
+                <ScalarProperty Name="RequestReceiverId" ColumnName="RequestReceiverId" />
+                <ScalarProperty Name="RequestPayerId" ColumnName="RequestPayerId" />
+                <ScalarProperty Name="RequestPendingReason" ColumnName="RequestPendingReason" />
+                <ScalarProperty Name="RequestNotes" ColumnName="RequestNotes" />
+                <ScalarProperty Name="CspContactNumber" ColumnName="CspContactNumber" />
+                <ScalarProperty Name="CspPayerEmail" ColumnName="CspPayerEmail" />
+                <ScalarProperty Name="CartNumberOfItems" ColumnName="CartNumberOfItems" />
+                <ScalarProperty Name="RequestListOfProducts" ColumnName="RequestListOfProducts" />
+                <ScalarProperty Name="CspShippingAddress" ColumnName="CspShippingAddress" />
+                <ScalarProperty Name="RequestPaymentDate" ColumnName="RequestPaymentDate" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="RequestLastName" ColumnName="RequestLastName" />
+                <ScalarProperty Name="RequestFirstName" ColumnName="RequestFirstName" />
+                <ScalarProperty Name="RequestTxnId" ColumnName="RequestTxnId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderedProducts">
+            <EntityTypeMapping TypeName="TeethStoreModel.OrderedProduct">
+              <MappingFragment StoreEntitySet="OrderedProducts">
+                <ScalarProperty Name="SelectedColor" ColumnName="SelectedColor" />
+                <ScalarProperty Name="SelectedSize" ColumnName="SelectedSize" />
+                <ScalarProperty Name="NordStromId" ColumnName="NordStromId" />
+                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+                <ScalarProperty Name="ExternalLink" ColumnName="ExternalLink" />
+                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="RecordId" ColumnName="RecordId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Slides">
+            <EntityTypeMapping TypeName="TeethStoreModel.Slide">
+              <MappingFragment StoreEntitySet="Slides">
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colors">
+            <EntityTypeMapping TypeName="TeethStoreModel.Color">
+              <MappingFragment StoreEntitySet="Color">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ColorId" ColumnName="ColorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="TeethStoreModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="SelectedColour" ColumnName="SelectedColour" />
+                <ScalarProperty Name="SelectedSize" ColumnName="SelectedSize" />
+                <ScalarProperty Name="NordstromId" ColumnName="NordstromId" />
+                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+                <ScalarProperty Name="ExternalLink" ColumnName="ExternalLink" />
+                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+                <ScalarProperty Name="ImageMimeType" ColumnName="ImageMimeType" />
+                <ScalarProperty Name="ImageData" ColumnName="ImageData" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductToColors">
+            <EntityTypeMapping TypeName="TeethStoreModel.ProductToColor">
+              <MappingFragment StoreEntitySet="ProductToColor">
+                <ScalarProperty Name="ProductToColorId" ColumnName="ProductToColorId" />
+                <ScalarProperty Name="ColorId" ColumnName="ColorId" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductToSizes">
+            <EntityTypeMapping TypeName="TeethStoreModel.ProductToSize">
+              <MappingFragment StoreEntitySet="ProductToSize">
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="SizeId" ColumnName="SizeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sizes">
+            <EntityTypeMapping TypeName="TeethStoreModel.Size">
+              <MappingFragment StoreEntitySet="Size">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

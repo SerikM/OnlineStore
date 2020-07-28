@@ -1,0 +1,56 @@
+﻿@model WebUI2.Models.CartInfo
+
+
+
+<h2>Your cart</h2>
+
+<div class="validation-fail">
+    @Html.ValidationSummary()
+</div>
+
+<hr />
+<table width="700" align="center">
+    <thead>
+        <tr>
+            <th align="center">Quantity</th>
+            <th align="left">Item</th>
+            <th align="right">Price</th>
+            <th align="right">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.Cart.ProductLines)
+        {
+            <tr>
+                <td align="center">@line.Quantity</td>
+                <td align="left">@line.Products.First().Name</td>
+                <td align="right">@line.Products.First().Price.ToString("c")</td>
+                <td align="right">@((line.Products.First().Price * line.Quantity).ToString("c"))</td>
+
+                <td align="right">
+                    @using (Html.BeginForm("RemoveItem", "Cart"))
+                    {
+                        @Html.Hidden("ProductID", line.Products.First().ProductID)
+                        @Html.HiddenFor(x => x.ReturnUrl)
+                        <input class="actionButton" type="submit" value="Remove" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" align="right">Total:</td>
+            <td align="right">@(Model.Cart.ComputeCartValue().ToString("c"))</td>
+        </tr>
+    </tfoot>
+</table>
+
+
+
+<p class="actionButton">
+    <a href="@Model.ReturnUrl">Continue Shopping</a>
+    @Html.ActionLink("Checkout now", "Checkout")
+</p>
+
+

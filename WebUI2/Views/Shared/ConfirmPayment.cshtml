@@ -1,0 +1,97 @@
+﻿@model Model.EF.Order
+
+
+
+
+<script>
+
+   function getReceipt(id) {
+       window.open("/Home/PrintReceipt?id=" + id, null, null, true);
+   }
+</script>
+
+
+
+
+    <h3>
+    <br />
+    Thank you for your order. Your transaction has been completed and a receipt for your purchase has been mailed to you.
+    <br />
+    <br />
+
+</h3>
+
+
+
+
+        <div>
+            Following are the details of this transaction
+            <div style="float:right">
+                <input type="submit" value="Print Receipt" onclick="return getReceipt(@Model.Id)" />
+            </div>
+        </div>
+        <br />
+        <br />
+   
+
+
+
+
+    <div class="transSummary">
+        <table>
+
+
+            <tr>
+                <td>
+                    Buyer Name
+                </td>
+                <td>
+                    @Model.ShiptoName
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Payment Amount
+                </td>
+                <td>
+                    @Model.Total
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Transaction ID
+                </td>
+                <td>
+                    @Model.RequestTxnId
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Buyer's Contact Number
+                </td>
+                <td>
+                    @Model.CspContactNumber
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Shipping Address
+                </td>
+                <td>
+                    @Model.CspShippingAddress
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Purchased Products
+                </td>
+                <td>
+                    @Model.RequestListOfProducts
+                </td>
+            </tr>
+        </table>
+    </div>

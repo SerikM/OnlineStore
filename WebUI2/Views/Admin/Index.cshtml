@@ -1,0 +1,115 @@
+﻿@model WebUI2.Models.PagingInfo
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Admin Page</h2>
+
+
+<br />
+<p>
+    @Html.ActionLink("Add a new product", "Create")
+</p>
+<br />
+
+
+<table cellspacing="20">
+
+    <tr>
+        <th>
+            Photo
+        </th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th class="colRight"></th>
+    </tr>
+
+
+    @foreach (var p in Model.Products)
+    {
+        <tr>
+            <td>
+                <img class="view-summary-image" src="@Url.Action("GetImage", "Products", new { productId=p.ProductID })" />
+            </td>
+            <td>
+                @p.ProductID
+            </td>
+            <td>
+                @Html.ActionLink(p.Name, "Edit", new { ProductID = p.ProductID, page = Model.CurrentPage })
+            </td>
+
+            <td>
+                @p.Price.ToString("c")
+            </td>
+            <td>
+                @using (Html.BeginForm("Delete", "Admin"))
+                {
+                    @Html.Hidden("ProductID", p.ProductID)
+                    <input type="submit" value="Delete" />
+                }
+
+            </td>
+        </tr>
+    }
+</table>
+
+@for (int i = 0; i <= (Model.TotalItems / Model.PageSize); i++)
+{
+    string cssClass = Model.CurrentPage == (i + 1) ? "current-page" : "";
+    
+    @Html.ActionLink(Convert.ToString(i + 1), "Index", new { page = (i + 1) }, new { @class= cssClass}); @:&nbsp;&nbsp;
+}
+
+<br />
+<br />
+<br />
+
+<p>
+    @Html.ActionLink("Add a new product", "Create")
+</p>
+
+
+
+
+
+
+
+
+<hr />
+@using (Html.BeginForm("DeleteUser", "Admin"))
+{
+
+    <legend>Delete a user</legend>
+
+    <br />
+    @Html.Label("Username") @Html.TextBox("username")
+    <br />
+
+    <input type="submit" value="Delete" />
+
+}
+
+
+
+<br />
+<br />
+<hr />
+
+@Html.ActionLink("Insert countries names into database", "InsertCountries", "Admin")
+
+
+
+<br />
+<br />
+<hr />
+@using (Html.BeginForm("UploadBackgroundImage", "Admin", FormMethod.Post, new { enctype="multipart/form-data" })) 
+{
+    @:Select the background image to upload
+    <input type="file" value="browse" name="image" />
+    <input type="submit" value="Submit" />
+}
+
+
+

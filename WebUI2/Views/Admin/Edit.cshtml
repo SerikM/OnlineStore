@@ -1,0 +1,103 @@
+﻿@model WebUI2.Models.ProductInfo
+
+
+
+<div class="validation-fail">
+    @Html.ValidationSummary()
+</div>
+
+
+@{
+    string str = Model.Product.Name ?? "Use the form below to create a new product";
+    <h2>@str</h2>
+}
+
+<hr />
+
+@using (Html.BeginForm("Edit", "Admin", new { page = Model.CurrentPage }, FormMethod.Post, new { enctype = "multipart/form-data", defaultbutton = "submitbutton" }))
+{
+    <div class="product-editor">
+
+        @Html.HiddenFor(p => p.Product.ProductID)
+        <br />
+        @Html.Label("Name")
+        @Html.EditorFor(p => p.Product.Name)
+        <br />
+        <br />
+        @Html.Label("Description")
+
+        @Html.EditorFor(p => p.Product.Description)
+        <br />
+        <br />
+        @Html.Label("Category")
+
+        @Html.EditorFor(p => p.Product.Category)
+        <br />
+        <br />
+        @Html.Label("SubCategory")
+
+        @Html.EditorFor(p => p.Product.SubCategory)
+        <br />
+        <br />
+        @Html.Label("Price")
+
+        @Html.EditorFor(p => p.Product.Price)
+        <br />
+        <br />
+        @Html.Label("Long Description")
+        @Html.EditorFor(p => p.Product.LongDescription)
+        <br />
+        <br />
+        @Html.Label("Source Url")
+        @Html.EditorFor(p => p.Product.ExternalLink)
+        <br />
+        <br />
+
+        <h2>Image</h2>
+
+        <table>
+            <tr>
+                <td>
+                    <img class="view-summary-image" src="@Url.Action("GetImage", "Products", new{ productId=Model.Product.ProductID })" />         
+                </td>
+                <td>
+                    Upload New Image
+                    <br />
+                    <input type="file" name="Image" />
+                </td>
+            </tr>
+        </table>
+
+        <br />
+        <br />
+
+        <hr />
+
+        <table>
+            <tr>
+                <td>
+                    Select sizes available <br />
+                    (Hold CTRL button to select multiple values)
+                    <br />
+                    @Html.ListBoxFor(p => p.SizeHolders, new SelectList(
+                                         Model.SizeHolders))
+                </td>
+                <td>
+                    Select colors available <br />
+                    (Hold CTRL button to select multiple values)
+                    <br />
+                    @Html.ListBoxFor(p => p.ColorHolders, new SelectList(
+                                         Model.ColorHolders))
+                </td>
+            </tr>
+        </table>
+        <p>
+            <input type="submit" id="submitbutton" value="Submit Changes" />
+        </p>
+        <p>
+            @Html.ActionLink("Cancel and Return to List", "Index")
+        </p>
+    </div>
+
+
+}

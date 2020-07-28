@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Model.Entities.FavouriteItem>
+
+
+
+
+@foreach (var fav in Model)
+{   <p>
+        @Html.ActionLink(fav.Product.Name, "ShowDetailedDescription", "Products", new { productId = fav.ProductID, returnUrl = ViewBag.returnUrl }, new { @class = "personal-view-fav-link" })
+    </p>
+}

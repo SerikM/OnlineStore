@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Model.EF.Product>
+
+
+
+@if (Model.Count() == 0)
+{
+    <h2>Your search returned no results.</h2>
+}
+
+else
+{
+    foreach (var result in Model)
+    {
+
+        <div class="search-result-entry">
+            <table style="width:100%">
+                <tr>
+                    <td>
+                        @using (Html.BeginForm("ShowDetailedDescription", "Products",
+                 new { productId = result.ProductID, returnUrl = "/Products/List" }))
+                        {
+                            <input type="image" class="view-summary-image"
+                                   src="@Url.Action("GetImage", "Products", new { productId = result.ProductID})" />
+                        }
+                    </td>
+                    <td style="width:20%;">
+                        @Html.ActionLink(result.Name, "ShowDetailedDescription", "Products",
+                    new { productId = result.ProductID, returnUrl = "/Products/List" }, null)
+                    </td>
+                    <td style="width:50%;">
+                        @result.LongDescription
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+    }
+}

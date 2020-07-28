@@ -1,0 +1,74 @@
+﻿@model Model.ExternalAuthentication.ApplicationUser
+
+
+@*<script src="/Scripts/MyScripts.js"></script>*@
+
+<h2>@Model.UserName</h2>
+
+
+
+
+<table style="width:100%">
+
+    <tr>
+        <td class="account-tab">
+
+            Personal Details
+        </td>
+
+    </tr>
+    <tr>
+        <td class="account-tab-lower">
+            Email:    @Model.Email
+            <br />
+            Last Name: @Model.Surname
+            <br />
+            First name: @Model.Name
+            <br />
+
+            @if (Model.ShippingAddress != null && Model.ShippingAddress.Count() != 0)
+            {
+               @:Address:  @Model.ShippingAddress.First().ToString()
+            }
+
+        </td>
+    </tr>
+
+
+
+
+    <tr>
+        <td class="account-tab" id="past-orders">
+            Past Orders
+        </td>
+    </tr>
+    <tr>
+        <td class="account-tab-lower" id="past-orders-display">
+
+            <img id="loading-img" style="margin-left:40px;display:none;width:59px; vertical-align:middle;"
+                 src="~/Content/MyImages/spinner.gif" />
+
+        </td>
+    </tr>
+
+
+
+
+    <tr>
+        <td class="account-tab" id="fav-list">
+           Items saved in wish list
+        </td>
+    </tr>
+    <tr>
+        <td id ="fav-list-display" class="account-tab-lower">
+            <img id="loading-img-fav" style="margin-left:40px;display:none;width:59px; vertical-align:middle;"
+                 src="~/Content/MyImages/spinner.gif" />
+           
+        </td>
+    </tr>
+
+</table>
+
+
+
+

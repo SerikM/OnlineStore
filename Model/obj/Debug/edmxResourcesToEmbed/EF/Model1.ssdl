@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TeethStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BackgroundImage">
+    <Key>
+      <PropertyRef Name="ImageId" />
+    </Key>
+    <Property Name="ImageId" Type="int" Nullable="false" />
+    <Property Name="ImageData" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ImageMimeType" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Color">
+    <Key>
+      <PropertyRef Name="ColorId" />
+    </Key>
+    <Property Name="ColorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Countries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IncompleteOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RequestTxnId" Type="varchar(max)" Nullable="false" />
+    <Property Name="RequestFirstName" Type="varchar(max)" Nullable="false" />
+    <Property Name="RequestLastName" Type="varchar(max)" Nullable="false" />
+    <Property Name="RequestMcGross" Type="varchar(max)" />
+    <Property Name="RequestPaymentDate" Type="varchar(max)" Nullable="false" />
+    <Property Name="CspShippingAddress" Type="varchar(max)" Nullable="false" />
+    <Property Name="RequestListOfProducts" Type="varchar(max)" />
+    <Property Name="CartNumberOfItems" Type="varchar(max)" />
+    <Property Name="CspPayerEmail" Type="varchar(max)" Nullable="false" />
+    <Property Name="CspContactNumber" Type="varchar(max)" Nullable="false" />
+    <Property Name="RequestNotes" Type="varchar(max)" />
+    <Property Name="RequestPendingReason" Type="varchar(max)" />
+    <Property Name="Message" Type="varchar(max)" />
+    <Property Name="RequestPayerId" Type="varchar(max)" />
+    <Property Name="RequestReceiverId" Type="varchar(max)" />
+    <Property Name="RequestPaymentStatus" Type="varchar(max)" Nullable="false" />
+    <Property Name="RequestMcFee" Type="varchar(max)" />
+    <Property Name="RequestPaymentType" Type="varchar(max)" />
+    <Property Name="RequestCurrency" Type="varchar(max)" />
+    <Property Name="RequestResidenceCnt" Type="varchar(max)" />
+    <Property Name="RequestTxnType" Type="varchar(max)" />
+    <Property Name="CorrelationId" Type="varchar(max)" />
+    <Property Name="PayPalPayerId" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RequestTxnId" Type="varchar(max)" Nullable="false" />
+    <Property Name="RequestFirstName" Type="varchar(max)" Nullable="false" />
+    <Property Name="RequestLastName" Type="varchar(max)" Nullable="false" />
+    <Property Name="Total" Type="varchar(max)" />
+    <Property Name="RequestPaymentDate" Type="varchar(max)" Nullable="false" />
+    <Property Name="CspShippingAddress" Type="varchar(max)" Nullable="false" />
+    <Property Name="RequestListOfProducts" Type="varchar(max)" />
+    <Property Name="CartNumberOfItems" Type="varchar(max)" />
+    <Property Name="CspPayerEmail" Type="varchar(max)" Nullable="false" />
+    <Property Name="CspContactNumber" Type="varchar(max)" Nullable="false" />
+    <Property Name="RequestNotes" Type="varchar(max)" />
+    <Property Name="RequestPendingReason" Type="varchar(max)" />
+    <Property Name="RequestPayerId" Type="varchar(max)" />
+    <Property Name="RequestReceiverId" Type="varchar(max)" />
+    <Property Name="RequestPaymentStatus" Type="varchar(max)" Nullable="false" />
+    <Property Name="RequestPaymentType" Type="varchar(max)" />
+    <Property Name="RequestCurrency" Type="varchar(max)" />
+    <Property Name="RequestResidenceCnt" Type="varchar(max)" />
+    <Property Name="RequestTxnType" Type="varchar(max)" />
+    <Property Name="PayPalPayerId" Type="varchar(max)" />
+    <Property Name="ShiptoName" Type="varchar(max)" />
+    <Property Name="ShippingCost" Type="varchar(max)" />
+    <Property Name="SubTotal" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="OrderedProducts">
+    <Key>
+      <PropertyRef Name="RecordId" />
+    </Key>
+    <Property Name="RecordId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="LongDescription" Type="varchar(max)" Nullable="false" />
+    <Property Name="ExternalLink" Type="varchar(max)" />
+    <Property Name="SubCategory" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="NordStromId" Type="int" />
+    <Property Name="SelectedSize" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="SelectedColor" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="16" Scale="2" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="500" />
+    <Property Name="ImageData" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ImageMimeType" Type="varchar" MaxLength="50" />
+    <Property Name="LongDescription" Type="varchar(max)" />
+    <Property Name="ExternalLink" Type="varchar(max)" />
+    <Property Name="SubCategory" Type="nvarchar" MaxLength="500" />
+    <Property Name="NordstromId" Type="int" />
+    <Property Name="SelectedSize" Type="nvarchar" MaxLength="500" />
+    <Property Name="SelectedColour" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="ProductToColor">
+    <Key>
+      <PropertyRef Name="ProductToColorId" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="ColorId" Type="int" Nullable="false" />
+    <Property Name="ProductToColorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductToSize">
+    <Key>
+      <PropertyRef Name="Discriminator" />
+    </Key>
+    <Property Name="SizeId" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="Discriminator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Size">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Slides">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageName" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_OrderedProducts_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="OrderedProducts" Type="Self.OrderedProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderedProducts">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductToColorColor">
+    <End Role="Color" Type="Self.Color" Multiplicity="1" />
+    <End Role="ProductToColor" Type="Self.ProductToColor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Color">
+        <PropertyRef Name="ColorId" />
+      </Principal>
+      <Dependent Role="ProductToColor">
+        <PropertyRef Name="ColorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductToColorProduct">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="ProductToColor" Type="Self.ProductToColor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductToColor">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductToSize_Product">
+    <End Role="Products" Type="Self.Products" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProductToSize" Type="Self.ProductToSize" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductToSize">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductToSize_Size">
+    <End Role="Size" Type="Self.Size" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ProductToSize" Type="Self.ProductToSize" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Size">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductToSize">
+        <PropertyRef Name="SizeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TeethStoreModelStoreContainer">
+    <EntitySet Name="BackgroundImage" EntityType="Self.BackgroundImage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IncompleteOrder" EntityType="Self.IncompleteOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderedProducts" EntityType="Self.OrderedProducts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductToColor" EntityType="Self.ProductToColor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductToSize" EntityType="Self.ProductToSize" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Size" EntityType="Self.Size" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Slides" EntityType="Self.Slides" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_OrderedProducts_Order" Association="Self.FK_OrderedProducts_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderedProducts" EntitySet="OrderedProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductToColorColor" Association="Self.FK_ProductToColorColor">
+      <End Role="Color" EntitySet="Color" />
+      <End Role="ProductToColor" EntitySet="ProductToColor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductToColorProduct" Association="Self.FK_ProductToColorProduct">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductToColor" EntitySet="ProductToColor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductToSize_Product" Association="Self.FK_ProductToSize_Product">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductToSize" EntitySet="ProductToSize" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductToSize_Size" Association="Self.FK_ProductToSize_Size">
+      <End Role="Size" EntitySet="Size" />
+      <End Role="ProductToSize" EntitySet="ProductToSize" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

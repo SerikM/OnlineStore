@@ -1,0 +1,78 @@
+﻿@model WebUI2.Models.ProductInfo
+
+
+
+@*<script src="/Scripts/MyScripts.js"></script>*@
+
+
+
+<h2>@Model.Product.Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="return-link" href="@ViewData["returnUrl"]">< Back</a></h2>
+
+
+
+
+
+<div>
+    <table>
+        <tr>
+            <td width="60%">
+
+                <img class="product-image-large" src="@Url.Action("GetImage", "Products", new { productId = Model.Product.ProductID })" />
+            </td>
+
+            <td width="40%">
+                <div class="price-column"><h3>Item Price: @Model.Product.Price.ToString("c")</h3></div>
+                <br />
+                @Model.Product.LongDescription
+                <br />
+                <br />
+
+
+
+
+                <div id="products-div" style="height:60px; margin-top:10px;">
+
+                    <input type="submit" class="add-to-cart" id="@Model.Product.ProductID" value="Add to Cart" />
+
+                    @{
+                        string str = Model.Product.ProductID + "loading-image";
+                        <img id="@str" class="spinner" src="~/Content/MyImages/spinner.gif" />
+                    }
+                </div>
+
+
+                <div>
+                    Select size
+                    <br />
+                    <br />
+                    @for(int i = 0; i < Model.SizeHolders.Length; i++)
+                    {
+                        <span class="size">@Model.SizeHolders[i]</span>
+                        if (i == 5) { <br /><br />}
+                    }
+                </div>
+
+                <br />
+
+                <div >
+                    <br />
+                    <br />
+                    Select color
+                    <br />
+                    <br />
+                    @foreach (var color in Model.ColorHolders)
+                    {
+                        <span class="color" id="@color" style="background-color:@color;">&nbsp;&nbsp;&nbsp;</span>
+                    }
+
+                </div>
+
+
+
+
+            </td>
+
+        </tr>
+
+    </table>
+</div>

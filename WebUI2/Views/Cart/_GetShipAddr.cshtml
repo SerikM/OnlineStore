@@ -1,0 +1,32 @@
+﻿@model IEnumerable<WebUI2.SearchAddress.AddressRecord>
+
+
+@if (Model != null)
+{
+
+
+    foreach (var rec in Model)
+    {
+        string id = Convert.ToString(rec.objectId);
+        <div id="@id" class="address-record">
+            @{
+
+
+                @rec.shortAddressString;
+                @Html.Hidden(id + "Country", "Australia");
+                @Html.Hidden(id + "State", "NSW");
+                @Html.Hidden(id + "StreetNumber", rec.houseNumberString);
+                @Html.Hidden(id + "StreetName", rec.roadName);
+                @Html.Hidden(id + "PostCode", rec.postCode);
+                @Html.Hidden(id + "Town", rec.suburbName);
+                @Html.Hidden(id + "StreetType", rec.roadType);
+            }
+        </div>
+    }
+
+
+}
+else
+{
+    @:No matching addresses found
+}

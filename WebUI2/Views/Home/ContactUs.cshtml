@@ -1,0 +1,177 @@
+﻿@model Model.Entities.InquiryInfo
+
+
+
+
+<div class="validation-fail">
+    @Html.ValidationSummary()
+</div>
+
+
+
+@using (Html.BeginForm())
+{
+    <div class="editor" style="margin:40px;">
+
+
+
+
+        <div style="float: left; margin-bottom: 10px;">
+            <table>
+                <thead>
+                    <tr>
+
+                        <th style=" padding:50px ">Contact Details</th>
+
+                    </tr>
+
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td><h3>Email</h3></td>
+                    </tr>
+
+                    <tr>
+                        <td>kris.kasnikouskaya@stesha.com.au</td>
+
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <h3>Phone</h3>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                @System.Configuration.ConfigurationManager.AppSettings["MyContactNumber"]
+
+                            </p>
+                            <p>
+                                @System.Configuration.ConfigurationManager.AppSettings["MyMobContactNumber"]
+
+                            </p>
+                        </td>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>
+                                Fax
+                            </h3>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td>
+                            +61-02-9646374
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="float: right; margin-bottom:10px;">
+            <table>
+                <thead>
+                    <tr><th style=" padding: 50px;">Send Us a Message</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            If you have a question please complete the form below
+                            <br /> and we will get back to you
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="border:solid; border-color:red; padding:10px;">
+                            Fields marked with asteriks(*) must be completed
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            <br />
+                            <br />
+                            @Html.Label("Title") @Html.EditorFor(p => p.Title)
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.Label("First Name *") @Html.EditorFor(p => p.FirstName)<br /><br /></td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.Label("Last Name") @Html.EditorFor(p => p.LastName)<br /><br /></td>
+                    </tr>
+
+                    <tr>
+
+                        <td>@Html.Label("Email Address *") @Html.EditorFor(p => p.EmailAddress)<br /><br /></td>
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+
+                            @Html.Label("Telephone") @Html.EditorFor(p => p.Telephone)
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            @Html.Label("Country") @Html.EditorFor(p => p.Country)
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            @Html.Label("Subject") @Html.EditorFor(p => p.Subject)
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            @Html.Label("Message *") @Html.EditorFor(p => p.Message)
+
+                            <br />
+                            <br />
+
+                            <input type="submit" value="Submit" />
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+    </div>
+}

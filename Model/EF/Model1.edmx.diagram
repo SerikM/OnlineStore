@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="49d8a1906d734f64bc52cefed0fbe70e" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="TeethStoreModel.BackgroundImage" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TeethStoreModel.Country" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="TeethStoreModel.IncompleteOrder" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="TeethStoreModel.Order" Width="1.5" PointX="5.75" PointY="5.125" />
+        <EntityTypeShape EntityType="TeethStoreModel.OrderedProduct" Width="1.5" PointX="8" PointY="6.125" />
+        <EntityTypeShape EntityType="TeethStoreModel.Slide" Width="1.5" PointX="2.75" PointY="8.75" />
+        <AssociationConnector Association="TeethStoreModel.FK_OrderedProducts_Order" />
+        <EntityTypeShape EntityType="TeethStoreModel.Color" Width="1.5" PointX="10.375" PointY="7.5" />
+        <EntityTypeShape EntityType="TeethStoreModel.Product" Width="1.5" PointX="10.375" PointY="1.375" />
+        <EntityTypeShape EntityType="TeethStoreModel.ProductToColor" Width="1.5" PointX="12.625" PointY="2.375" />
+        <EntityTypeShape EntityType="TeethStoreModel.ProductToSize" Width="1.5" PointX="12.625" PointY="5.125" />
+        <AssociationConnector Association="TeethStoreModel.FK_ProductToColorColor" />
+        <AssociationConnector Association="TeethStoreModel.FK_ProductToColorProduct" />
+        <AssociationConnector Association="TeethStoreModel.FK_ProductToSize_Product" />
+        <EntityTypeShape EntityType="TeethStoreModel.Size" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="TeethStoreModel.FK_ProductToSize_Size" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,24 @@
+﻿
+
+
+<h3>Enter your username and we will send you a replacement password</h3>
+
+<div class="validation-fail">
+    @Html.ValidationSummary()
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.TextBox("username")
+
+    <br />
+
+    <input type="submit" value="Submit" />
+}
+
+<br />
+<br />
+
+<div class="return-link">
+    @Html.ActionLink("Log in with a new password", "Login", "Account", null, new { @class = "return-link" })
+</div>

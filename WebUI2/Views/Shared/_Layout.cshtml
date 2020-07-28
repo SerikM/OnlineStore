@@ -1,0 +1,110 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome! | Stesha</title>
+    @Scripts.Render("~/bundles/scripts")
+    @Styles.Render("~/bundles/styles")
+</head>
+
+
+<body>
+    <div id="header">
+        <table style="width:100%;">
+            <tr>
+                <td>
+                    <div class="title">
+
+                        @using (Html.BeginForm("Home", "Home"))
+                        {
+                            <input class="logo-button" type="image" src="~/Content/MyImages/haze.png" />
+
+                            @Html.ActionLink("Home", "Home", "Home")
+                            @Html.ActionLink("About Us", "AboutUs", "Home")
+                            @Html.ActionLink("Contact Us", "ContactUs", "Home")
+                            @Html.ActionLink("Buy", "List", "Products")
+                        }
+
+                    </div>
+                </td>
+                <td>
+
+                    <div class="member-console">
+                        @{
+                            if (Session["Profile"] == null)
+                            {
+
+                                @Html.ActionLink("Log in", "Login", "Account")
+                                //&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                @Html.ActionLink("Register", "Register", "Account")
+                            }
+
+                            else
+                            {
+                                Model.ExternalAuthentication.ApplicationUser cust = (Model.ExternalAuthentication.ApplicationUser)Session["Profile"];
+
+                                @Html.ActionLink("Sign Off", "Signoff", "Account")
+                                @Html.ActionLink("Logged in as " + cust.UserName, "Personal", "Account", null, null)
+
+                            }
+                        }
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+
+                <td>
+                    @{
+                        Html.RenderAction("CartSummary", "Cart");
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <table style=" width:95%; margin-left:10px; margin-right:10px;">
+        <tr>
+            <td style="vertical-align:top;">
+
+
+                @Html.Action("Menu", "Navigator")
+
+
+            </td>
+            <td>
+
+                <div id="content">
+                    @if (TempData["Confirm"] != null)
+                    {
+                        <div class="confirm-green">@TempData["Confirm"]</div>
+                    }
+                    else if (TempData["Fail"] != null)
+                    {
+                        <div class="fail-red">@TempData["Fail"]</div>
+                    }
+
+                    @RenderBody()
+
+
+
+
+                    @{
+
+                        Html.RenderAction("ViewsSummary", "Home");
+                    }
+
+
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    @{
+        Html.RenderAction("FooterContent", "Footer");
+    }
+
+</body>
+</html>

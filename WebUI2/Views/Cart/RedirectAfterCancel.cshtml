@@ -1,0 +1,23 @@
+﻿@using Model.Entities
+@model WebUI2.Models.ShippingInfo
+
+
+<h2>Your payment with PayPal has been cancelled</h2>
+
+
+@Html.RouteLink("Return Home", "Default", new { @class = "returnLink"})
+<br />
+<br />
+
+@using (Html.BeginForm("ProceedToPay", "Cart", FormMethod.Post, null)) 
+{ 
+    CartShipPayInfo csp = (CartShipPayInfo)Session["CartShipPayInfo"];
+    Model.ShipDet = csp.ShippingDetails;
+    
+    @Html.ActionLink("Use a different payment method", 
+                      null,
+                      null,
+                      null,
+                      new { @class = "returnLink" })
+}
+

@@ -1,0 +1,101 @@
+﻿
+
+.theme-default {
+    position:relative;
+    background-color:#c4c7b4;
+    width:660px;
+    padding:40px;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius:40px;
+    
+   
+
+}
+
+.theme-default .nivoSlider {
+    position:relative;
+    /*position:absolute;*/ 
+    z-index:0;
+    width:660px; /* Make sure your images are the same size */
+    /* Make sure your images are the same size */  
+	background:#fff url(/MyImages/loading.gif) no-repeat 50% 50%;  
+    margin-left:auto;
+    margin-right:auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4); 
+   
+}
+
+
+.theme-default .nivoSlider img {
+    position:relative;
+    width:660px;
+    background:no-repeat;
+    background-size: cover;
+	display:none;
+    margin-left:auto;
+    margin-right:auto;
+   
+}
+
+
+.theme-default .nivoSlider a {
+	border:0;
+	display:block;
+}
+
+.theme-default .nivo-controlNav {
+	position:absolute;
+	left:50%;
+	bottom:-2px;
+    margin-left:-40px; /* Tweak this to center bullets */
+
+}
+.theme-default .nivo-controlNav a {
+	display:block;
+	width:22px;
+	height:22px;
+	background:url(/MyImages/bullets.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+	margin-right:3px;
+	float:left;
+    position:relative;
+	z-index:9;
+	cursor:pointer;
+}
+.theme-default .nivo-controlNav a.active {
+	background-position:0 -22px;
+}
+
+.theme-default .nivo-directionNav a {
+	display:block;
+	
+	height:30px;
+	background:url(/MyImages/arrows.png) no-repeat;
+	text-indent:-9999px;
+	border:0px;
+    position:absolute;
+	top:45%;
+	z-index:9;
+	cursor:pointer;
+}
+.theme-default a.nivo-nextNav {
+	background-position:-30px 0;
+	right:10px;
+    width:30px;
+}
+.theme-default a.nivo-prevNav {
+	left:10px;
+    width:25px;
+}
+.slidebottom 
+{
+    display:block;
+    height: 30px;
+    background:url(images/shadow3.png) no-repeat;
+    background-position:center;
+}
+.nivo-controlNav a.active {
+	font-weight:bold;
+}

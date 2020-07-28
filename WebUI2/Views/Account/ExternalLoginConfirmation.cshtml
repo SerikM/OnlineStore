@@ -1,0 +1,39 @@
+﻿@model WebUI2.Models.LoginInfoNoPassword
+
+
+<h3>Associate your @ViewBag.LoginProvider account.</h3>
+
+@using (Html.BeginForm("ConfirmExternalLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, null))
+{
+    @Html.AntiForgeryToken()
+
+
+    <hr />
+    <div class="validation-fail">
+        @Html.ValidationSummary()
+    </div>
+
+    <p class="text-info">
+        You've successfully authenticated with <strong>@ViewBag.LoginProvider</strong>.
+        Please provide some details for this site and click Register button to finish
+        logging in.
+    </p>
+    <div>
+        <p>
+            @Html.LabelFor(m => m.Username)
+
+            @Html.TextBoxFor(m => m.Username)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Email)
+
+            @Html.TextBoxFor(m => m.Email)
+        </p>
+    </div>
+    <div>
+        <div>
+            <input type="submit" value="Register" />
+        </div>
+    </div>
+}
+

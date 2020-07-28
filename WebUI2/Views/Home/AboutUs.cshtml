@@ -1,0 +1,117 @@
+﻿
+<script>
+
+
+    $(document).ready(function () {
+  
+        $("#main-slide-div").delay(300).fadeIn(6000);
+       
+    });
+</script>
+
+
+
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $("#sl1 > img:gt(0)").hide('slow');
+        $("#sl2 > img:gt(0)").hide('slow');
+        $("#sl3 > img:gt(0)").hide('slow');
+
+        setInterval(function () {
+
+            $("#sl1 > img:first")
+                .fadeOut('6000')
+                .next()
+                .fadeIn('6000')
+                .end()
+                .appendTo("#sl1");
+
+            $("#sl2 > img:first")
+                .fadeOut('6000')
+                .next()
+                .fadeIn('6000')
+                .end()
+                .appendTo("#sl2");
+
+            $("#sl3 > img:first")
+                .fadeOut('6000')
+                .next()
+                .fadeIn('6000')
+                .end()
+                .appendTo("#sl3");
+
+
+        }, 5000, null);
+    });
+
+</script>
+
+
+<div id="super-main-slide-div"  style="min-height:270px;">
+    <div id="main-slide-div" style="display:none;">
+        <table style="width:100%;">
+            <tr>
+                <td>
+                    <div class="slideshow" id="sl1">
+
+                        <img src="~/Content/MyImages/dressups1/dressup1.jpg" />
+                        <img src="~/Content/MyImages/dressups1/dressup2.jpg" />
+                        <img src="~/Content/MyImages/dressups1/dressup3.jpg" />
+
+                    </div>
+                </td>
+                <td>
+                    <div class="slideshow" id="sl2">
+
+                        <img src="~/Content/MyImages/dressups2/dressup1.jpg" />
+                        <img src="~/Content/MyImages/dressups2/dressup2.jpg" />
+                        <img src="~/Content/MyImages/dressups2/dressup3.jpg" />
+
+                    </div>
+                </td>
+                <td>
+                    <div class="slideshow" id="sl3">
+
+                        <img src="~/Content/MyImages/dressups3/dressup1.jpg" />
+                        <img src="~/Content/MyImages/dressups3/dressup2.jpg" />
+                        <img src="~/Content/MyImages/dressups3/dressup3.jpg" />
+
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+<div class="text-about">
+    <h2>About Us</h2>
+
+    Our company has a proven record in fashion and retail business.
+    Our customers come from a range of backgrounds and cultures.
+    Everyday we ship our products to numerous locations in Australia and around the world.
+
+    <br />
+    <br />
+
+    Stesha is an Internet-based business with a mission to make it easy for anyone to buy clothes and accessories online.
+    <br /><br />
+    Although the company has grown significantly over the past few years, we see our future in further developing our
+    e-commerce and online payment systems and expanding into new areas such as mobile apps,
+    mobile operating systems.
+    <br />
+    <br />
+    Our main focus is the development of an open,
+    collaborative and prosperous e-commerce ecosystem that benefits consumers and merchants.
+
+</div>
+<br />
+
+
+
+

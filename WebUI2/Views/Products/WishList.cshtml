@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Model.Entities.FavouriteItem>
+
+
+
+    <h2>Wish list &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="return-link" href="@ViewBag.Data">< Return</a></h2>
+
+
+@if (Model.Count() == 0) 
+{
+  <h3> There are no items in your wish list</h3>
+}
+
+else 
+{
+   <p>
+    @Html.DisplayFor(model => model.ElementAt(0).ApplicationUser.Name)
+</p>
+
+<table cellpadding="20">
+    <tr>
+        <th valign="top">
+            Image
+        </th>
+        <th valign="top">
+            Product ID
+        </th>
+        <th align="left" valign="top">
+            @Html.DisplayNameFor(model => model.ElementAt(0).Product.Name)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img class="product-image-wish" src="@Url.Action("GetImage", "Products", new { productId = item.ProductID })" />
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => item.ProductID)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Product.Name)
+            </td>
+
+
+            <td>
+                @Html.ActionLink("Delete", "DeleteFromWishList", new { productId = item.ProductID, userName = item.ApplicationUser.UserName })
+            </td>
+        </tr>
+    }
+
+</table>
+
+}
